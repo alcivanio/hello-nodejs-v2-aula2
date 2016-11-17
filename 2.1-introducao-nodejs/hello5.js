@@ -1,7 +1,7 @@
 
-
-const fs = require("fs");//um modulo fs do node, para escrever arquivos
 const readline = require("readline");
+const fileSaver = require("./file_saver");
+
 const rl = readline.createInterface({
 	input:process.stdin,
 	output:process.stdout
@@ -29,12 +29,8 @@ function gravaArquivo(){
 	rl.question("Informe um nome para o arquivo (sem .txt): ", (cNomeArquivo) => {
 		nomeArquivo = cNomeArquivo + ".txt";
 		rl.close();
-	
-	for (var i in nomes)
-		fs.appendFile(nomeArquivo, nomes[i] + "\n");
-	
-	console.log("Arquivos " + nomeArquivo +" salvo!");
 
+		fileSaver.fSave(nomeArquivo, nomes);
 	});
 	
 	
